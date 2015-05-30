@@ -1,10 +1,16 @@
 ## A Simple Facade for CommonJS loggers.
+slf4js wraps specific logger implementations with a standard logger interface.  The job of performing the logging
+is delegated to the specific logging implementations, slf4js mostly provides the interface and throttles the logger
+implementations to behave more like loggers in the Java world.
 
-slf4js avoids appenders and layouts in configurations.  To configure log messages,
-simply create a JavaScript object containing the format for the log messages, and the log levels for
+However, slf4js avoids such log4j-concepts like appenders and layouts in configurations.  To configure log messages,
+simply create a JSON object containing the format for the log messages, and the log levels for
 whatever you want to log.  Log levels can be assigned to anything--files, "classes," functions, "packages."
-To use a custom logger, assign the path (relative to the JS root) to logger file to the optional "logger" property.
+To use a custom logger, assign the path to logger file to the optional "logger" property.
 If you omit the logger property, the default ConsoleLogger will be used, sending messages to the browser console.
+
+Regarding paths, this module uses another module called [ctx-loader](https://github.com/pford68/context-loader)
+which allows prefixes such as "classpath!" or "context!" to be used to make NodeJS paths more predictable.
  
 #### An example configuration file:
 ```json

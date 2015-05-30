@@ -1,0 +1,21 @@
+**/build/
+out
+
+
+#IDE
+**/.idea/
+**/*.iml
+
+
+# Mac OS X
+**/.
+**/..
+**/.DS_Store
+
+
+# Docs
+private
+
+
+# NPM
+**/*.log

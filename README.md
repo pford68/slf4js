@@ -1,7 +1,8 @@
 ## A Simple Facade for CommonJS loggers.
 slf4js wraps specific logger implementations with a standard logger interface.  The job of performing the logging
 is delegated to the specific logging implementations, slf4js mostly provides the interface and throttles the logger
-implementations to behave more like loggers in the Java world.
+implementations to behave more like loggers in the Java world.  In this way, you can swap out loggers easily, which
+you can't do if you sprinkle code for a specific logger implementation throughout your code.
 
 However, slf4js avoids such log4j-concepts like appenders and layouts in configurations.  To configure log messages,
 simply create a JSON object containing the format for the log messages, and the log levels for

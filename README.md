@@ -1,21 +1,22 @@
 ## A Simple Facade for CommonJS loggers.
 
-slf4js dispenses with appenders and layouts in configurations.  To configure log messages,
+slf4js avoids appenders and layouts in configurations.  To configure log messages,
 simply create a JavaScript object containing the format for the log messages, and the log levels for
 whatever you want to log.  Log levels can be assigned to anything--files, "classes," functions, "packages."
 To use a custom logger, assign the path (relative to the JS root) to logger file to the optional "logger" property.
 If you omit the logger property, the default ConsoleLogger will be used, sending messages to the browser console.
  
 An example configuration file:
-```javascript
+```json
  {
- logger: 'classpath!src/logging/AlertLogger',
- pattern: "%d{yyyy/MM/dd HH:mm:ss.SSS} [%M] %p%-5l - %m%n",
- firstModule: "INFO",                     // "firstModule" is a function being logged from INFO up.
- MyGreatClass: "LOG"                      // "MyGreatClass" is a "class" being logged from LOG up.
+    "logger": "classpath!src/logging/AlertLogger",
+    "pattern": "%d{yyyy/MM/dd HH:mm:ss.SSS} [%M] %p%-5l - %m%n",
+    "firstModule": "INFO",                     
+    "MyGreatClass": "LOG"                      
  };
 ``` 
-
+* "firstModule" is a function being logged from INFO up.
+* "MyGreatClass" is a "class" being logged from LOG up.
 </p>
  
 #### Configuration properties:

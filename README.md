@@ -43,11 +43,9 @@ e.g., %d{yyyy/MM/dd HH:mm:ss,SSS}.  If the format is omitted, the format default
 | %l | The function that generated the event |
 | %L | |
 | %m | The log message |
-| %M | Class, function, file, package that issued the message.  The name will be the one passed
-to slf4js.getLogger() when the logger was created. |
+| %M | Class, function, file, package that issued the message.  The name will be the one passed to slf4js.getLogger() when the logger was created. |
 | %n | The platform-specific newline character |
 | %p | The log level of the event |
 | %% | The percent sign |
-| %-[0-9]+ | Moves the next part of the message to the right by the specified number of spaces:
-e.g., %p%-5l, writes the log level, followed by 5 spaces followed by the location. |
+| %-[0-9]+ | Moves the next part of the message to the right by the specified number of spaces:  e.g., %p%-5l, writes the log level, followed by 5 spaces followed by the location. |
 

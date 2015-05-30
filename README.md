@@ -28,6 +28,7 @@ If you omit the logger property, the default ConsoleLogger will be used, sending
        log level of LOG, because "MyGreatClass" maps to LOG.
 
 
+### Pattern Symbols
 The pattern symbols are the same ones used by log4j, and for the most part they have the same functions,
 but there are a few differences, and only the symbols below are supported:
 

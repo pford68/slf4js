@@ -6,7 +6,7 @@ whatever you want to log.  Log levels can be assigned to anything--files, "class
 To use a custom logger, assign the path (relative to the JS root) to logger file to the optional "logger" property.
 If you omit the logger property, the default ConsoleLogger will be used, sending messages to the browser console.
  
-An example configuration file:
+#### An example configuration file:
 ```json
  {
     "logger": "classpath!src/logging/AlertLogger",
@@ -19,7 +19,7 @@ An example configuration file:
 * "MyGreatClass" is a "class" being logged from LOG up.
 </p>
  
-#### Configuration properties:
+## Configuration properties:
 * pattern:  The format for log messages
 * logger:  [optional] A String path to the ILogger class to use for logger.  The path is relative to the JS root.
 * All other properties are key-value pairs mapping a string (which can be the name of a function, the "name"

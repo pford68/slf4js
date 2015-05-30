@@ -27,7 +27,7 @@ which allows prefixes such as "classpath!" or "context!" to be used to make Node
  
 ## Configuration properties:
 * pattern:  The format for log messages
-* logger:  [optional] A String path to the ILogger class to use for logger.  The path is relative to the JS root.
+* logger:  [optional] A String path to the Logger implementation class to use for logger. 
 * All other properties are key-value pairs mapping a string (which can be the name of a function, the "name"
        of a class, or any string that was used when the logger instance was created) to a log level.  Hence,
        given the properties example above, slf4js.getLogger("MyGreatClass") would create a Logger with a

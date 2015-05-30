@@ -37,9 +37,9 @@ but there are a few differences, and only the symbols below are supported:
 The date of the event.  Optionally the date format follows within braces:
 e.g., %d{yyyy/MM/dd HH:mm:ss,SSS}.  If the format is omitted, the format defaults to yyyy/MM/dd HH:mm:ss.
 
-Pattern | Description
-----------------------
-%F | The web page where the log request was issued.
+| Pattern | Description |
+| -------- | --------------
+| %F | The web page where the log request was issued. |
 
 
 %l | The function that generated the event

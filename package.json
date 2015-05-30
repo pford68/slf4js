@@ -1,0 +1,23 @@
+{
+  "name": "slf4js",
+  "version": "1.0.0",
+  "description": "A simple logging facade for Node",
+  "main": "index.js",
+  "browser": "browser.js",
+  "scripts": {
+    "test": "jasmine-node test/spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pford68/slf4js.git"
+  },
+  "keywords": [
+    "logging"
+  ],
+  "author": "Philip Ford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pford68/slf4js/issues"
+  },
+  "homepage": "https://github.com/pford68/slf4js#readme"
+}

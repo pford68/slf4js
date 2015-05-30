@@ -14,9 +14,11 @@ An example configuration file:
  firstModule: "INFO",                     // "firstModule" is a function being logged from INFO up.
  MyGreatClass: "LOG"                      // "MyGreatClass" is a "class" being logged from LOG up.
  };
-``` * </p>
- *
-Configuration properties:
+``` 
+
+</p>
+ 
+#### Configuration properties:
 * pattern:  The format for log messages
 * logger:  [optional] A String path to the ILogger class to use for logger.  The path is relative to the JS root.
 * All other properties are key-value pairs mapping a string (which can be the name of a function, the "name"
@@ -35,41 +37,33 @@ but there are a few differences, and only the symbols below are supported:
 The date of the event.  Optionally the date format follows within braces:
 e.g., %d{yyyy/MM/dd HH:mm:ss,SSS}.  If the format is omitted, the format defaults to yyyy/MM/dd HH:mm:ss.
 
-
-%F
-The web page where the log request was issued.
-
-
-%l
-The function that generated the event
+Pattern | Description
+----------------------
+%F | The web page where the log request was issued.
 
 
-%L
+%l | The function that generated the event
 
 
-
-%m
-The log message
+%L | 
 
 
-%M
-Class, function, file, package that issued the message.  The name will be the one passed
+%m | The log message
+
+
+%M | Class, function, file, package that issued the message.  The name will be the one passed
 to slf4js.getLogger() when the logger was created.
 
 
-%n
-The platform-specific newline character
+%n | The platform-specific newline character
 
 
-%p
-The log level of the event
+%p | The log level of the event
 
 
-%%
-The percent sign
+%% | The percent sign
 
 
-%-[0-9]+
-Moves the next part of the message to the right by the specified number of spaces:
+%-[0-9]+ | Moves the next part of the message to the right by the specified number of spaces:
 e.g., %p%-5l, writes the log level, followed by 5 spaces followed by the location.
 

@@ -11,7 +11,7 @@ To use a custom logger, assign the path to logger file to the optional "logger" 
 If you omit the logger property, the default ConsoleLogger will be used, sending messages to the browser console.
 
 Regarding paths, this module uses another module called [ctx-loader](https://github.com/pford68/context-loader)
-which allows prefixes such as "classpath!" or "context!" to be used to make NodeJS paths more predictable.
+which allows prefixes such as "classpath!" or "context!" to be used to make NodeJS paths consistent.
  
 #### An example configuration file:
 ```json

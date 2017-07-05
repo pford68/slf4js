@@ -1,6 +1,6 @@
 {
   "name": "slf4js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple logging facade for Node",
   "main": "index.js",
   "browser": "browser.js",

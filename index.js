@@ -1,25 +1,26 @@
 /**
  *
  */
-require("ctx-loader");
-var config = require("config"),
-    debugEnabled = config.debug === true,
-    logConfig,
-    logger,
-    slf4js;
+const fs = require('fs');
+const nconf = require('nconf');
+nconf.argv().env([
+    'logging',
+    'logProperties'
+]);
+nconf.defaults({
+    logger: './lib/ConsoleLogger',
+    logging: {},
+    logProperties: "./logProperties.json"  // This should work in the CWD.
+});
 
-try {
-    logConfig = require("context!logProperties");       // The log configuration
-} catch(e) {
-    logConfig = {
-        logger: './lib/ConsoleLogger'
-    };
+
+if (fs.existsSync(nconf.get('logProperties'))){
+    nconf.file({ file: nconf.get('logProperties') });
 }
 
-logger = require(logConfig.logger);
-slf4js = require('./lib/slf4js')(logger, logConfig, debugEnabled);
-
-
-module.exports = slf4js;
+let logConfig = nconf.get();
+//console.log(logConfig)
+let logger = require(logConfig.logger);
+module.exports = require('./lib/slf4js')(logger, logConfig.logging, logConfig.debug !== false);
 
 

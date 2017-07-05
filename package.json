@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/pford68/slf4js#readme",
   "dependencies": {
-    "ctx-loader": "^1.0.3",
     "dateformat": "^2.0.0",
     "nconf": "^0.8.4",
     "object-util": "^1.0.1"

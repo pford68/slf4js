@@ -1,6 +1,6 @@
 {
   "name": "slf4js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple logging facade for Node",
   "main": "index.js",
   "browser": "browser.js",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/pford68/slf4js#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "dateformat": "^2.0.0",
     "nconf": "^0.8.4",
     "object-util": "^1.0.1",

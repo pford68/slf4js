@@ -23,6 +23,7 @@
   "dependencies": {
     "dateformat": "^2.0.0",
     "nconf": "^0.8.4",
-    "object-util": "^1.0.1"
+    "object-util": "^1.0.1",
+    "underscore": "^1.8.3"
   }
 }

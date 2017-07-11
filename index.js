@@ -8,7 +8,7 @@ nconf.argv().env([
     'logProperties'
 ]);
 nconf.defaults({
-    logger: './lib/ConsoleLogger',
+    logger: './lib/loggers/ConsoleLogger',
     logging: {},
     logProperties: "./logProperties.json"  // This should work in the CWD.
 });
@@ -20,7 +20,7 @@ if (fs.existsSync(nconf.get('logProperties'))){
 
 let logConfig = nconf.get();
 //console.log(logConfig)
-let logger = require(logConfig.logger);
+let logger = require(logConfig.logger)(logConfig.logging);
 module.exports = require('./lib/slf4js')(logger, logConfig.logging, logConfig.debug !== false);
 
 

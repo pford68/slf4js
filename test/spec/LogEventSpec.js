@@ -12,7 +12,7 @@ describe('LogEvent', () => {
         expect(event.datetime).to.be.a('Date');
     });
 
-    it ('should sve string messages in the data property, leaving the message property blank', () => {
+    it ('should save string messages in the data property, leaving the message property blank', () => {
         let message = 'Hi!';
         const event = new LogEvent(null, { name: 'LOG'}, message);
         expect(event.message).to.be.a('String');
@@ -20,11 +20,23 @@ describe('LogEvent', () => {
         expect(event.data).to.equal(message);
     });
 
-    it ('should sve Object messages in the message property, and data shold be null', () => {
+    it ('should save Object messages in the message property, and data shold be null', () => {
         let message = { content: 'Hi!' };
         const event = new LogEvent(null, { name: 'LOG'}, message);
         expect(event.message.content).to.equal(message.content);
         expect(event.data).to.be.null;
+    });
+
+    it ('should have a location property', () => {
+        let message = { content: 'Hi!' };
+        const event = new LogEvent(null, { name: 'LOG'}, message);
+        expect(event.location).to.exist;
+    });
+
+    it ('should have a name property', () => {
+        let message = { content: 'Hi!' };
+        const event = new LogEvent(null, { name: 'LOG'}, message);
+        expect(event.name).to.exist;
     });
 
 });

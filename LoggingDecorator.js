@@ -236,9 +236,6 @@ LoggingDecorator.prototype = {
             logger.assert(this.format());
         }
     },
-    dir: function DIR(that) {
-        this.logger.dir(that);
-    },
     /**
      *
      * @return {String}

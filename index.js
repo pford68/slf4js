@@ -19,8 +19,7 @@ if (fs.existsSync(nconf.get('logProperties'))){
 }
 
 let logConfig = nconf.get();
-//console.log(logConfig)
 let logger = require(logConfig.logger)(logConfig.logging);
-module.exports = require('./lib/slf4js')(logger, logConfig.logging, logConfig.debug !== false);
+module.exports = require('./slf4js')(logger, logConfig.logging, logConfig.debug !== false);
 
 

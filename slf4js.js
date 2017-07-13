@@ -23,10 +23,10 @@
  */
 'use strict';
 
-const DecoratorFactory = require("./LoggingDecorator");
 
 module.exports = function(logger, logConfig, debugEnabled){
-    const Decorator = DecoratorFactory(logConfig, debugEnabled);
+
+    const Decorator = require('./LoggingDecorator')(logConfig, debugEnabled);
 
     return {
         getLogger: function getLogger(that) {

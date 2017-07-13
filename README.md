@@ -10,13 +10,11 @@ whatever you want to log.  Log levels can be assigned to anything--files, "class
 To use a custom logger, assign the path to logger file to the optional "logger" property.
 If you omit the logger property, the default ConsoleLogger will be used, sending messages to the browser console.
 
-Regarding paths, this module uses another module called [ctx-loader](https://github.com/pford68/context-loader)
-which allows prefixes such as "classpath!" or "context!" to be used to make NodeJS paths consistent.
  
 #### An example configuration file:
 ```json
  {
-    "logger": "classpath!src/logging/AlertLogger",
+    "logger": "logging/AlertLogger",
     "pattern": "%d{yyyy/MM/dd HH:mm:ss.SSS} [%M] %p%-5l - %m%n",
     "firstModule": "INFO",                     
     "MyGreatClass": "LOG"                      

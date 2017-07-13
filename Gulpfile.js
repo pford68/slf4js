@@ -7,13 +7,13 @@ const jshint = require('gulp-jshint');
 const mocha = require('gulp-mocha');
 const istanbul = require('gulp-istanbul');
 const COVERAGE_THRESHOLD = 90;
-const src = ['./**/*.js', '!**/node_modules/**', '!Gulpfile.js'];
+const src = './lib/**/*.js';
+const testSrc = './test/spec/*.js';
 
 
 //======================================================================== Tasks
 gulp.task('doc', function (cb) {
-    let $src = src.unshift('README.md');
-    gulp.src($src, {read: false})
+    gulp.src(['README.md', src], {read: false})
         .pipe(jsdoc(cb));
 });
 
@@ -46,7 +46,7 @@ gulp.task('pre-test', () => {
  Runs tests with coverage.
  */
 gulp.task('test', ['pre-test'], () => {
-    return gulp.src('./test/**/*Spec.js')
+    return gulp.src(testSrc)
         .pipe(mocha({
             reporter: 'list'
         }))

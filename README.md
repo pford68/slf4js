@@ -18,7 +18,7 @@ If you omit the logger property, the default ConsoleLogger will be used, sending
     "pattern": "%d{yyyy/MM/dd HH:mm:ss.SSS} [%M] %p%-5l - %m%n",
     "firstModule": "INFO",                     
     "MyGreatClass": "LOG"                      
- };
+ }
 ``` 
 * "firstModule" is a function being logged from INFO up.
 * "MyGreatClass" is a "class" being logged from LOG up.

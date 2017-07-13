@@ -1,0 +1,6 @@
+{
+  "logger": "../fixtures/AlertLogger",
+  "pattern": "%d{yyyy/MM/dd HH:mm:ss.SSS} [%M] %p%-5l - %m%n",
+  "firstModule": "INFO",
+  "MyGreatClass": "LOG"
+}

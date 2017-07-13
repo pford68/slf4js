@@ -12,6 +12,10 @@ const Decorator = require('../../Decorator');
 
 describe('slf4js', () => {
 
+    it('should contain getLogger()', () => {
+        expect(typeof slf4js.getLogger === 'function').to.be.true;
+    });
+
     describe('getLogger()', () => {
         let LOGGER;
 
@@ -23,6 +27,8 @@ describe('slf4js', () => {
 
         });
 
+
+
         it('should return a valid Logger', () => {
             expect(typeof LOGGER.info === 'function').to.be.true;
             expect(typeof LOGGER.debug === 'function').to.be.true;
@@ -32,13 +38,40 @@ describe('slf4js', () => {
         });
 
 
+        it('should accept functions as input, as well as strings', () => {
+            function testFunction(){}
+            let LOGGER = slf4js.getLogger(testFunction);
+            expect(typeof LOGGER.info === 'function').to.be.true;
+        });
+
+
+        it('should not throw an error if the function is anonymous', () => {
+            let f = function(){
+                let LOGGER = slf4js.getLogger(this);
+                LOGGER.log("It works");
+            };
+            try {
+                f();
+            } catch(e){
+                expect.fail(0, 1, "We should not reach this point.")
+            }
+        });
+
+
+        it('should accept classes as input', () => {
+            class MyGreatClass {}
+            let LOGGER = slf4js.getLogger(MyGreatClass);
+            expect(typeof LOGGER.info === 'function').to.be.true;
+            expect(typeof LOGGER.info === 'function').to.be.true;
+        });
+
+
         describe('The returned Logger', () => {
             it('should be frozen', () => {
-                expect(Object.isFrozen(LOGGER)).to.be.true;
+                expect(LOGGER).to.be.frozen;
             });
-
             it('should not be extensible', () => {
-                expect(Object.isExtensible(LOGGER)).to.be.false;
+                expect(LOGGER).not.to.be.extensible;
             });
         });
 

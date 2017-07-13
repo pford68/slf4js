@@ -1,21 +1,21 @@
-**/build/
-out
-
-
 #IDE
 **/.idea/
 **/*.iml
+
+
+# Coverage
+coverage
+.nyc_output
+
+# Docs
+private
+docs
 
 
 # Mac OS X
 **/.
 **/..
 **/.DS_Store
-
-
-# Docs
-private
-docs
 
 
 # NPM

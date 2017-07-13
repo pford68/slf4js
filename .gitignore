@@ -19,3 +19,4 @@ private
 
 # NPM
 **/*.log
+node_modules

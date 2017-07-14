@@ -5,7 +5,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const sinon = require('sinon');
 const config = require('../fixtures/testLogProperties.json');
-const testLogger = require('../fixtures/AlertLogger');
+const testLogger = require('../fixtures/TestLogger');
 const slf4js = require('../../lib/slf4js')(testLogger, config);
 const Decorator = require('../../Decorator');
 
@@ -26,7 +26,6 @@ describe('slf4js', () => {
         afterEach(() => {
 
         });
-
 
 
         it('should return a valid Logger', () => {
@@ -52,6 +51,14 @@ describe('slf4js', () => {
             };
             try {
                 f();
+            } catch(e){
+                expect.fail(0, 1, "We should not reach this point.")
+            }
+        });
+
+        it('should not throw an error if the class/function is not configured', () => {
+            try {
+                slf4js.getLogger('Wow!');
             } catch(e){
                 expect.fail(0, 1, "We should not reach this point.")
             }

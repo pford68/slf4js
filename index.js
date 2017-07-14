@@ -8,7 +8,8 @@ nconf.argv().env([
     'logProperties'
 ]);
 nconf.defaults({
-    logger: './lib/loggers/ConsoleLogger',
+    logger: './lib/loggers/BaseLogger',
+    appenders: 'ConsoleAppender',
     logging: {},
     logProperties: "./logProperties.json"  // This should work in the CWD.
 });

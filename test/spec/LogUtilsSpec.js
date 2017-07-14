@@ -7,18 +7,6 @@ const logLevels = require('../../lib/conf/logLevels.json');
 const TestLogger = require('../fixtures/TestLogger');
 
 
-/*
- Black        0;30     Dark Gray     1;30
- Red          0;31     Light Red     1;31
- Green        0;32     Light Green   1;32
- Brown/Orange 0;33     Yellow        1;33
- Blue         0;34     Light Blue    1;34
- Purple       0;35     Light Purple  1;35
- Cyan         0;36     Light Cyan    1;36
- Light Gray   0;37     White         1;37
- */
-
-
 describe('LogUtils', () => {
 
     let utils = require('../../lib/LogUtils')(config);
@@ -73,7 +61,7 @@ describe('LogUtils', () => {
         });
     });
 
-    describe('fixArguments', () => {
+    describe('formatArguments()', () => {
         it('should return a String', () => {
             let logger = new TestLogger();
             logger.logEvent = { data: 'hgfhhgfh'};
@@ -87,6 +75,35 @@ describe('LogUtils', () => {
             let result = utils.formatArguments(logger, 'a', [1,2,3], { msg: 'OK' });
             expect(result).to.have.string(JSON.stringify({ msg: 'OK' }));
             expect(result).to.have.string('[1,2,3]');
+        });
+    });
+
+
+    describe('toArray()', () => {
+        it('should simply return the same array when an array is passed to it', () => {
+            let a = [1,2,3,4];
+            let b = utils.toArray(a);
+            expect(Object.is(a, b)).to.be.true;
+        });
+
+        it('should return a comma-separated string as an array of trimmed strings', () => {
+            let b = utils.toArray('a, fine, what?,12,OK,  nice,b  ');
+            expect(Array.isArray(b)).to.be.true;
+            expect(b.length).to.equal(7);
+            expect(b[0]).to.equal('a');
+            expect(b[1]).to.equal('fine');
+            expect(b[2]).to.equal('what?');
+            expect(b[3]).to.equal('12');
+            expect(b[4]).to.equal('OK');
+            expect(b[5]).to.equal('nice');
+            expect(b[6]).to.equal('b');
+        });
+
+        it('should return a string with no commas as an array with one element', () => {
+            let b = utils.toArray('OK');
+            expect(Array.isArray(b)).to.be.true;
+            expect(b.length).to.equal(1);
+            expect(b[0]).to.equal('OK');
         });
     });
 

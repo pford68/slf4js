@@ -3,7 +3,7 @@
  */
 const expect = require('chai').expect;
 const config = require('../../fixtures/testLogProperties.json');
-const logger = require('../../../lib/loggers/BaseLogger')(config);
+const logger = require('../../../lib/loggers/BaseLogger');
 const Logger = require('../../../lib/loggers/Logger');
 
 describe('BaseLogger', () => {

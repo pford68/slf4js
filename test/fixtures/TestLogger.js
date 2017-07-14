@@ -12,8 +12,8 @@ TestLogger.prototype.lastMessage = function(){
 TestLogger.prototype.add = function(msg){
     return this.messages.push(msg)
 };
-Object.keys(Logger.prototype).forEach( (name, $this) => {
-    if ($this.hasOwnProperty(name)){
+Object.keys(Logger.prototype).forEach( name => {
+    if (Logger.prototype.hasOwnProperty(name)){
         TestLogger.prototype[name] = function(msg, ...varargs){
             this.add({
                 name: name,

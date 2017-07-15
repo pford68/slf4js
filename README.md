@@ -1,5 +1,5 @@
 
-## A Simple Facade for JavScript loggers.
+## A Simple Facade for JavaScript loggers.
 
 ![Build Status](https://travis-ci.org/pford68/slf4js.svg?branch=master)
 [![npm version](https://badge.fury.io/js/slf4js.svg)](https://badge.fury.io/js/slf4js)

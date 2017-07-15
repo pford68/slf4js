@@ -2,6 +2,7 @@
 ## A Simple Facade for CommonJS loggers.
 
 ![Build Status](https://travis-ci.org/pford68/slf4js.svg?branch=master)
+[![npm version](https://badge.fury.io/js/slf4js.svg)](https://badge.fury.io/js/slf4js)
 
 slf4js wraps specific logger implementations with a standard logger interface.  The job of performing the logging
 is delegated to the specific logging implementations, slf4js mostly provides the interface and throttles the logger

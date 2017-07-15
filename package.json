@@ -34,6 +34,7 @@
     "gulp-jshint": "^2.0.4",
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
     "mocha": "^3.4.2",
     "nyc": "^11.0.3",
     "require-dir": "^0.3.2",

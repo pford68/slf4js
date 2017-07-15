@@ -1,10 +1,16 @@
-
 ## A Simple Facade for JavaScript loggers.
 
 ![Build Status](https://travis-ci.org/pford68/slf4js.svg?branch=master)
 [![npm version](https://badge.fury.io/js/slf4js.svg)](https://badge.fury.io/js/slf4js)
 
-I have used versions of this logger in many of my projects, both on the client (with Browserify) in angularjs
+## Contents
+* [Summary](#summary)
+* [Configuration](#configuration)
+  * [Patterns](#pattern-symbols)
+* [Examples](#examples)  
+
+## Summary
+I have used variations of this logger in many of my projects, both on the client (with Browserify) in angularjs
 projects and in Node modules and applications.
 
 slf4js wraps specific logger implementations with a standard logger interface.  The job of performing the 
@@ -18,11 +24,11 @@ and the log levels for whatever you want to log.  Log levels can be assigned to 
 To use a custom logger, assign the path to logger file to the optional "logger" property.
 If you omit the logger property, the default ConsoleLogger will be used, sending messages to the browser console.
 
- 
+## Configuration 
 #### An example configuration file:
 ```json
  {
-    "logger": "logging/AlertLogger",
+    "logger": "logging/WinstonLogger",
     "pattern": "%d{yyyy/MM/dd HH:mm:ss.SSS} [%M] %p%-5l - %m%n",
     "firstModule": "INFO",                     
     "MyGreatClass": "LOG"                      
@@ -64,3 +70,67 @@ e.g., %d{yyyy/MM/dd HH:mm:ss,SSS}.  If the format is omitted, the format default
 | %%       | The percent sign |
 | %-[0-9]+ | Moves the next part of the message to the right by the specified number of spaces:  <br />e.g., %p%-5l, writes the log level, followed by 5 spaces followed by the location. |
 
+
+## Examples
+### angularjs
+I have not tried this with Angular yet, but I have used the LoggingDecorator module in slf4js to add new functionality
+to the `$log` service in angularjs projects, where we had wy too much logging to be useful, and I wanted to
+control logging at a "class" or function level:
+
+```javascript
+// Integrating slf4js with Angular $log:
+var angular = require('angular'),
+    logDecorator = require('slf4js/Decorator');
+
+angular.module('app.logging', [
+    require('../app-configuration')
+])
+    .config(['$provide', 'configProvider', function($provide, configProvider){
+        var config = configProvider.$get();
+        $provide.decorator('$log', ['$delegate', function($delegate){
+            // Capturing $delegate for later use when getLogger() is called with
+            // a "class"/function/object name.  Internally, slf4js can create a
+            // new decorator for the original $log each time $log.getLogger() is
+            // invoked.
+            var decorator = logDecorator($delegate, config.logging);
+
+            // This do-nothing object allows me to shut off logging
+            // In files that don't explicitly call $log.getLogger(), thereby
+            // completely overriding the default $log behavior.
+            return angular.extend({
+                warn: function(){},
+                info: function(){},
+                debug: function(){},
+                log: function(){},
+                error: function(){
+                    $delegate.error.apply(null, arguments);
+                },
+                trace: function(){}
+            }, decorator);
+        }]);
+    }]);
+
+module.exports = __name__;
+```
+
+Thereafter I would call do this something like this in my modules:
+
+
+```javascript
+var LOGGER = $log.getLogger('app.dashboard.DashboardController');
+
+LOGGER.debug('Show this only for debugging.');
+```
+
+I would have a configuration file that looks something like this:
+```json
+{
+    "appenders": "ConsoleAppender",
+    "pattern": "%d{yyyy/MM/dd HH:mm:ss.SSS} [%M] %p%-5l - %m%n",
+    "app": "OFF",                     
+    "app.dashboard": "INFO",
+    "app.dashboard.DashboardController": "DEBUG"
+ }
+```
+
+No logger was set because I was using the default logger.

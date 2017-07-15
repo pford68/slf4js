@@ -80,9 +80,10 @@ control logging at a "class" or function level:
 ```javascript
 // Integrating slf4js with Angular $log:
 var angular = require('angular'),
-    logDecorator = require('slf4js/Decorator');
+    logDecorator = require('slf4js/Decorator'),
+    __name__ = 'app.logging';
 
-angular.module('app.logging', [
+angular.module(__name__, [
     require('../app-configuration')
 ])
     .config(['$provide', 'configProvider', function($provide, configProvider){

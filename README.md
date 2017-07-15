@@ -4,9 +4,12 @@
 ![Build Status](https://travis-ci.org/pford68/slf4js.svg?branch=master)
 [![npm version](https://badge.fury.io/js/slf4js.svg)](https://badge.fury.io/js/slf4js)
 
-slf4js wraps specific logger implementations, whether browser-based or server with a standard logger interface.
-The job of performing the logging is delegated to the specific logging implementations, slf4js mostly provides the 
-interface and throttles the logger implementations to behave more like loggers such as log4j. which I like.  
+I have used versions of this logger in many of my projects, both on the client (with Browserify) in angularjs
+projects and in Node modules and applications.
+
+slf4js wraps specific logger implementations with a standard logger interface.  The job of performing the 
+logging is delegated to the specific logging implementations, slf4js mostly provides the interface and 
+coerces the logger implementations to behave more like loggers such as log4j. which I like.  
 In this way, you can swap out loggers easily, which you can't do if you sprinkle code for a specific logger 
 implementation throughout your code.
 

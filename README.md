@@ -1,17 +1,17 @@
 
-## A Simple Facade for CommonJS loggers.
+## A Simple Facade for JavScript loggers.
 
 ![Build Status](https://travis-ci.org/pford68/slf4js.svg?branch=master)
 [![npm version](https://badge.fury.io/js/slf4js.svg)](https://badge.fury.io/js/slf4js)
 
-slf4js wraps specific logger implementations with a standard logger interface.  The job of performing the logging
-is delegated to the specific logging implementations, slf4js mostly provides the interface and throttles the logger
-implementations to behave more like loggers in the Java world.  In this way, you can swap out loggers easily, which
-you can't do if you sprinkle code for a specific logger implementation throughout your code.
+slf4js wraps specific logger implementations, whether browser-based or server with a standard logger interface.
+The job of performing the logging is delegated to the specific logging implementations, slf4js mostly provides the 
+interface and throttles the logger implementations to behave more like loggers such as log4j. which I like.  
+In this way, you can swap out loggers easily, which you can't do if you sprinkle code for a specific logger 
+implementation throughout your code.
 
-However, slf4js avoids such log4j-concepts like appenders and layouts in configurations.  To configure log messages,
-simply create a JSON object containing the format for the log messages, and the log levels for
-whatever you want to log.  Log levels can be assigned to anything--files, "classes," functions, "packages."
+To configure log messages, simply create a JSON object containing the format for the log messages, 
+and the log levels for whatever you want to log.  Log levels can be assigned to anything--files, "classes," functions, "packages."
 To use a custom logger, assign the path to logger file to the optional "logger" property.
 If you omit the logger property, the default ConsoleLogger will be used, sending messages to the browser console.
 
